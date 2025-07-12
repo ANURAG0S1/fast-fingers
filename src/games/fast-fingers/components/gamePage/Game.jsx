@@ -32,11 +32,11 @@ function Game({
 
   useEffect(() => {
     if (user.level === "Easy") {
-      setTime(3.99);
+      setTime(2.99);
     } else if (user.level === "Medium") {
-      setTime(4.99);
+      setTime(3.99);
     } else {
-      setTime(5.99);
+      setTime(4.99);
     }
   }, [user.level]);
 
@@ -68,61 +68,75 @@ function Game({
   });
 
   return (
-    <div className="game-page-container">
-      <div className="left-bar">
-        <div className="score-board">
-          <div className="score-heading">HIGHEST SCORES</div>
-          <ul className="highScore">
+    <div className="flex flex-col md:flex-row p-6 bg-gradient-to-br from-blue-50 to-white gap-6">
+      {/* Left Sidebar */}
+      <div className="w-full md:w-1/4 bg-white rounded-xl shadow-md p-4 flex flex-col justify-between">
+        <div className="space-y-4">
+          <h2 className="text-xl font-semibold text-gray-700 text-center">
+            HIGHEST SCORES
+          </h2>
+          <ul className="space-y-2 text-center">
             {highScores &&
-              highScores.map((scoreVal) => {
-                return (
-                  <li key={scoreVal} className="scores">
-                    {scoreVal}
-                  </li>
-                );
-              })}
+              highScores.map((scoreVal) => (
+                <li
+                  key={scoreVal}
+                  className="text-lg font-medium text-gray-800 bg-gray-100 py-1 rounded"
+                >
+                  {scoreVal}
+                </li>
+              ))}
           </ul>
         </div>
-        <button className="stop-game" onClick={quitGame}>
-          <div className="stop-quitGame">STOP GAME</div>
+        <button
+          onClick={quitGame}
+          className="mt-6 w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg text-center font-bold transition"
+        >
+          STOP GAME
         </button>
       </div>
 
-      <div className="game-bar">
-        <div className="game-header">
-          <div className="userInfo">
-            <div className="card">
-              <PersonIcon />
-              <div className="card-text">{user.name}</div>
+      {/* Game Bar */}
+      <div className="w-full md:w-3/4 bg-white rounded-xl shadow-md p-6 space-y-6">
+        {/* Game Header */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          {/* User Info Left */}
+          <div className="flex gap-4">
+            <div className="flex items-center gap-2 bg-blue-100 px-3 py-2 rounded-lg">
+              <PersonIcon className="text-blue-700" />
+              <span className="font-medium text-gray-800">{user.name}</span>
             </div>
-            <div className="card">
-              <VideogameAssetIcon />
-              <div className="card-text">{user.level}</div>
+            <div className="flex items-center gap-2 bg-blue-100 px-3 py-2 rounded-lg">
+              <VideogameAssetIcon className="text-blue-700" />
+              <span className="font-medium text-gray-800">{user.level}</span>
             </div>
           </div>
-          <div className="userInfo">
-            <div className="card">
-              <KeyboardIcon />
-              <div className="card-text">fast fingers</div>
+
+          {/* Game Info Right */}
+          <div className="flex gap-4">
+            <div className="flex items-center gap-2 bg-blue-100 px-3 py-2 rounded-lg">
+              <KeyboardIcon className="text-blue-700" />
+              <span className="font-medium text-gray-800">Fast Fingers</span>
             </div>
-            <div className="card" style={{ fontWeight: 600 }}>
+            <div className="flex items-center gap-2 font-semibold text-blue-900">
               SCORE: {score}
             </div>
           </div>
         </div>
-        <div className="main-game">
+
+        {/* Main Game Area */}
+        <div className="space-y-6">
           <Timer word={word} time={time - timePassed} timePassed={timePassed} />
-          <div className="game-word">
+
+          {/* Game Word */}
+          <div className="text-center text-3xl font-bold tracking-wide">
             <p>
               {word.split("").map((char, i) => {
                 let color;
-
                 if (i < inputWord.length) {
-                  if (char === inputWord.charAt(i).toUpperCase()) {
-                    color = "var(--bkg-color, #1d3557)";
-                  } else {
-                    color = "#e63946";
-                  }
+                  color =
+                    char === inputWord.charAt(i).toUpperCase()
+                      ? "#1d3557"
+                      : "#e63946";
                 }
                 return (
                   <span key={i} style={{ color: color }}>
@@ -132,7 +146,9 @@ function Game({
               })}
             </p>
           </div>
-          <div className="input-word">
+
+          {/* Input */}
+          <div className="text-center">
             <input
               type="text"
               autoComplete="off"
@@ -140,6 +156,7 @@ function Game({
               value={inputWord}
               onChange={handleInputChange}
               ref={inputRef}
+              className="w-full sm:w-2/3 px-4 py-3 border-2 border-blue-300 rounded-lg text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>

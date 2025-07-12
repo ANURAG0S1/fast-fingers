@@ -1,7 +1,7 @@
 import { useState } from "react";
 import keyboard from "./../../../../assets/images/keyBoard.svg";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import "./Welcome.css";
+
 import PropTypes from "prop-types";
 
 function Welcome({ user, changeUser }) {
@@ -30,47 +30,61 @@ function Welcome({ user, changeUser }) {
   };
 
   return (
-    <div className="welcome-user-page">
-      <div className="header">
-        <div className="main-image">
-          <img src={keyboard} />
+    <div className="rounded-2xl min-w-[360px] py-8 flex flex-col items-center justify-center bg-gradient-to-br from-white to-sky-50 px-6">
+      {/* Header with Image */}
+      <div className="mb-10">
+        <div className="w-36 h-36 mx-auto">
+          <img
+            src={keyboard}
+            alt="Keyboard"
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
 
-      <form className="form-data" onSubmit={handleFormSubmit}>
-        <div className="form-field">
+      {/* Form */}
+      <form
+        onSubmit={handleFormSubmit}
+        className="w-full max-w-sm bg-white p-6 rounded-2xl shadow-lg space-y-6"
+      >
+        {/* Name Input */}
+        <div>
           <input
             type="text"
             placeholder="TYPE YOUR NAME"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800 placeholder-gray-400"
           />
+          {isNameError && (
+            <p className="text-red-500 text-sm mt-1">Please enter the name</p>
+          )}
         </div>
-        {isNameError ? <p className="error">Please enter the name</p> : ""}
-        <div className="form-field">
+
+        {/* Level Select */}
+        <div>
           <select
-            className="select"
-            type="text"
-            autoComplete="off"
             name="level"
             value={level}
             onChange={(e) => setLevel(e.target.value)}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option className="option" value="Easy">
-              Easy
-            </option>
-            <option className="option" value="Medium">
-              Medium
-            </option>
-            <option className="option" value="Hard">
-              Hard
-            </option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
           </select>
-          {isLevelError ? <p className="error">Please enter the Level</p> : ""}
+          {isLevelError && (
+            <p className="text-red-500 text-sm mt-1">Please enter the level</p>
+          )}
         </div>
-        <button className="start-game" type="submit">
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
+        >
           <PlayArrowIcon />
-          <div className="start-btn">START GAME</div>
+          <span>START GAME</span>
         </button>
       </form>
     </div>
@@ -81,7 +95,6 @@ Welcome.propTypes = {
     level: PropTypes.string,
   }).isRequired,
   changeUser: PropTypes.func.isRequired,
-  changeLoginState: PropTypes.func.isRequired,
 };
 
 export default Welcome;

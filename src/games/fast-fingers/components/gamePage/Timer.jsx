@@ -13,7 +13,7 @@ function Timer({ time }) {
   };
 
   return (
-    <div className="countdown">
+    <div className="countdown flex justify-center">
       <div className="base-timer">
         <svg
           className="base-timer__svg"

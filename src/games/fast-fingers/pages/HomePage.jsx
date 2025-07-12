@@ -14,8 +14,7 @@ function HomePage({user,changeUser}) {
 
 HomePage.propTypes = {
   user: PropTypes.any,
-  changeUser: PropTypes.func.isRequired,
-  changeLoginState: PropTypes.func.isRequired,
+  changeUser: PropTypes.func.isRequired
 };
 
 export default HomePage

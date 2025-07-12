@@ -2,7 +2,7 @@ import react, { useState, useCallback, useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import GamePage from "./pages/GamePage";
 
-const fastFingers =()=> {
+const FastFingers =()=> {
   const [user, setUser] = useState({ name: "", level: "Easy" });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -31,4 +31,4 @@ const fastFingers =()=> {
   );
 }
 
-export default fastFingers;
+export default FastFingers;

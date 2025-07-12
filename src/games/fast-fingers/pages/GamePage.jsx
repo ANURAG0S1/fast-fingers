@@ -40,23 +40,24 @@ function GamePage({ user }) {
   );
 
   return (
-    <div className="game-page">
-      {game ? (
-        <Game
-          user={user}
-          word={gameWord}
-          score={score}
-          gameCount={gameCount}
-          incrementScore={() => setScore(prev => prev + 1)}
-          scoreArray={scoreArray}
-          quitGame={quitGame}
-          isCorrect={isCorrect}
-          changeWord={changeWord}
-        />
-      ) : (
-        <EndGame user={user} score={score} playAgain={playAgain} />
-      )}
-    </div>
+   <div className="bg-gradient-to-b min-w-[360px] from-blue-50 to-white flex items-center justify-center p-6 rounded-2xl">
+  {game ? (
+    <Game
+      user={user}
+      word={gameWord}
+      score={score}
+      gameCount={gameCount}
+      incrementScore={() => setScore(prev => prev + 1)}
+      scoreArray={scoreArray}
+      quitGame={quitGame}
+      isCorrect={isCorrect}
+      changeWord={changeWord}
+    />
+  ) : (
+    <EndGame user={user} score={score} playAgain={playAgain} />
+  )}
+</div>
+
   );
 }
 
