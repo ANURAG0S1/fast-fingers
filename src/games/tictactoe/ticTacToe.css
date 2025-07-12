@@ -1,0 +1,85 @@
+.tic-tac-toe {
+  font-family: fantasy, sans-serif;
+  text-align: center;
+
+  .game-title{
+    font-size: 36px;
+    word-spacing: 21px;
+  }
+  .game-info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    .winner-desc {
+      font-size: 24px;
+    }
+  }
+  button {
+    width: fit-content;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 12px;
+    height: 40px;
+
+    color: rgb(235, 255, 122);
+    background: rgb(103, 150, 147);
+    margin: 32px 0px;
+    font-family:  sans-serif;
+    font-size: 24px;
+
+    &:active {
+      cursor: pointer;
+      scale: 0.96;
+      box-shadow: 1px 1px 4px 12px rgb(218, 218, 218);
+    }
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 12px;
+    border-radius: 5px;
+    background: rgb(103, 150, 147);
+    padding: 12px;
+
+    .box {
+      width: 60px;
+      height: 60px;
+      background: rgb(243, 243, 243);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      font-size: 32px;
+
+      &.filled {
+        background: rgb(255, 203, 203);
+      }
+
+      &.winner-index {
+        background-color: rgb(165, 255, 149);
+      }
+    }
+
+    &:not(.winner-declared) {
+      .box:active:not(.filled) {
+        cursor: pointer;
+        scale: 0.96;
+        box-shadow: 1px 1px 1px 12px gray;
+      }
+
+      &.x-turn {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><text x="0" y="30" font-size="30" font-family="Arial">X</text></svg>')
+            0 0,
+          auto;
+      }
+
+      &.o-turn {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><text x="0" y="30" font-size="30" font-family="Arial">O</text></svg>')
+            0 0,
+          auto;
+      }
+    }
+  }
+}

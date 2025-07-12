@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Game from '../components/gamePage/Game';
-import GameWord from '../data/GameWord';
+import GameWord from '../../../data/GameWord';
 import EndGame from './EndGame';
 
 function GamePage({ user }) {

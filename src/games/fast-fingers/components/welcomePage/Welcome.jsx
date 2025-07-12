@@ -1,41 +1,38 @@
-import { useState } from 'react'
-import keyboard from '../../assets/logo.png';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import './Welcome.css'
-import PropTypes from 'prop-types';
+import { useState } from "react";
+import keyboard from "./../../../../assets/images/keyBoard.svg";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import "./Welcome.css";
+import PropTypes from "prop-types";
 
-function Welcome({user,changeUser, changeLoginState}) {
-  const [name,setName] = useState('');
-  const [level,setLevel] = useState(user.level);
-  const[isNameError,setIsNameError] = useState(false)
-  const[isLevelError,setIsLevelError] = useState(false);
+function Welcome({ user, changeUser }) {
+  const [name, setName] = useState("");
+  const [level, setLevel] = useState(user.level);
+  const [isNameError, setIsNameError] = useState(false);
+  const [isLevelError, setIsLevelError] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    if(name ==='') {
+    if (name === "") {
       setIsNameError(true);
-    } else if(level === "") {
+    } else if (level === "") {
       setIsNameError(false);
       setIsLevelError(true);
-    }
-     else {
+    } else {
       const newUser = {
-        "name" : name,
-        "level": level
-      }
+        name: name,
+        level: level,
+      };
       changeUser(newUser);
 
       setIsNameError(false);
       setIsLevelError(false);
-      changeLoginState();
     }
-   
-  }
+  };
 
   return (
-    <div className='welcome-user-page'>
+    <div className="welcome-user-page">
       <div className="header">
-        <div className="main-image">          
+        <div className="main-image">
           <img src={keyboard} />
         </div>
       </div>
@@ -49,7 +46,7 @@ function Welcome({user,changeUser, changeLoginState}) {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        {isNameError ? (<p className='error'>Please enter the name</p>) : ""}
+        {isNameError ? <p className="error">Please enter the name</p> : ""}
         <div className="form-field">
           <select
             className="select"
@@ -69,24 +66,22 @@ function Welcome({user,changeUser, changeLoginState}) {
               Hard
             </option>
           </select>
-          {isLevelError ? (<p className='error'>Please enter the Level</p>) : ""}
+          {isLevelError ? <p className="error">Please enter the Level</p> : ""}
         </div>
         <button className="start-game" type="submit">
           <PlayArrowIcon />
           <div className="start-btn">START GAME</div>
         </button>
       </form>
-
-      
     </div>
-  )
+  );
 }
 Welcome.propTypes = {
   user: PropTypes.shape({
-    level: PropTypes.string
+    level: PropTypes.string,
   }).isRequired,
   changeUser: PropTypes.func.isRequired,
-  changeLoginState: PropTypes.func.isRequired
+  changeLoginState: PropTypes.func.isRequired,
 };
 
-export default Welcome
+export default Welcome;

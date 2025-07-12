@@ -17,7 +17,6 @@ p {
   justify-content: center;
   align-items: center;
   background-color: var(--bkg-color, #1d3557);
-  padding: 30px 40px 60px 40px;
 }
 
 .home-page {

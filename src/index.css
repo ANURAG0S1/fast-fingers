@@ -2,3 +2,14 @@
     padding: 0;
     margin: 0;
 }
+
+.bg-basic{
+    min-height: 100vh;
+    width: 100vw;
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+}

@@ -117,9 +117,6 @@ input[type="text"],
 }
 
 @media (max-width: 768px) {
-  .main-image {
-    width: 50%;
-  }
   .heading {
     font-size: 40px;
   }
